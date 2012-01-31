@@ -5,6 +5,9 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , dao = require('./dao');
+
+dao.setup ();
 
 var app = module.exports = express.createServer();
 
