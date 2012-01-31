@@ -38,3 +38,9 @@ app.get('/', routes.index);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+
+dao.CreateNewUser ("Dillon", "Michael", "michael@michaelcdillon.us", "Heres a short bio", function () {
+    dao.FindUser ("email", "michael@michaelcdillon.us", function (user) {
+        dao.CreateNewPost (user, "A New Post", new Date (), "Here is the content for the post");
+    });
+});

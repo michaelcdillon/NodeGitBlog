@@ -1,7 +1,8 @@
+var MONGO_CONFIG = require ('config').MongoDB;
 var mongoose = require ('mongoose');
 var models = require ('./../models');
 
-mongoose.connect('mongodb://localhost/NodeGitBlog');
+mongoose.connect('mongodb://' + MONGO_CONFIG.host + '/' + MONGO_CONFIG.db);
 
 var UserModel;
 var PostModel;

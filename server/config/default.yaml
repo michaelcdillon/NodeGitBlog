@@ -1,0 +1,3 @@
+MongoDB:
+    host:   localhost
+    db:     NodeGitBlog
