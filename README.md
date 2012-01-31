@@ -11,4 +11,6 @@ In the NodeGitBlog/server directory:
 
     sudo npm install -d
 
+Make sure you add a post-recieve hook to your github repo repository.
+
 
