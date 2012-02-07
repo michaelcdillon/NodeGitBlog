@@ -5,3 +5,7 @@ p This is the content for the first post.
 p It needed some more content.
 
 p and heres some more content.
+
+ul
+    li Here is one point
+    li here is a second point
