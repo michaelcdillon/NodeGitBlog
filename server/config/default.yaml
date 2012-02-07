@@ -1,3 +1,11 @@
+GitHubSettings:
+    repo:           NodeGitBlog
+    username:       michaelcdillon
+    branch:         master
+    contentDir:     content
+    rawUrl:         raw.github.com
+
+
 MongoDB:
-    host:   localhost
-    db:     NodeGitBlog
+    host:           localhost
+    db:             NodeGitBlog

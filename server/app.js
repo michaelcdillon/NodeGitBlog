@@ -5,7 +5,10 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , dao = require('./dao');
+  , dao = require('./dao')
+  , github = require ('./github')
+  , blog = require ('./blog')
+  , routes_config = require ('config').Routes;
 
 dao.setup ();
 
@@ -35,7 +38,8 @@ app.configure('production', function(){
 // Routes
 
 app.get ('/', routes.index);
-app.post ('/newPost', routes.newPost);
+app.post ('/newPush', github.checkForContentChanges, routes.newGitHubPost);
+app.get ('/post/:title', blog.preparePost, routes.viewPost);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
