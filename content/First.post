@@ -1,7 +1,7 @@
 {title: "The First Post", path: "TheFirstPost"}
 
-This is the content for the first post.
+p This is the content for the first post.
 
-It needed some more content.
+p It needed some more content.
 
-and heres some more content.
+p and heres some more content.
