@@ -28,6 +28,6 @@ exports.viewPost = function (req, res) {
         title       : req.postTitle,
         content     : req.postContent,
     };
-
+    
     res.render ('post', postData);
 }

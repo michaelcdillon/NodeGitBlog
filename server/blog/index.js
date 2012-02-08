@@ -1,4 +1,5 @@
 var dao = require ('../dao');
+var markdown = require ("markdown").markdown;
 
 /**
   * Pulls out the meta data of the post and also the content
@@ -10,6 +11,7 @@ exports.parseMetaDataAndContent = function (postContent, next) {
     console.log ('Meta: ' + meta);
     
     var content = postContent.replace (lines[0] + "\n", "");
+    var content = markdown.toHTML (content);
 
     next ({
         meta    : meta,
