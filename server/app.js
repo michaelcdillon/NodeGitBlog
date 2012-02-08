@@ -4,10 +4,10 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , dao = require('./dao')
-  , github = require ('./github')
-  , blog = require ('./blog')
+  , routes = require('./lib/routes')
+  , dao = require('./lib/dao')
+  , github = require ('./lib/github')
+  , blog = require ('./lib/blog')
   , routes_config = require ('config').Routes;
 
 dao.setup ();
