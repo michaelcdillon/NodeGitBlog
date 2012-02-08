@@ -65,28 +65,3 @@ for things like poems
 This is a div wrapping some Markdown plus.  Without the DIV attribute, it ignores the 
 block. 
 </div>
-
-## Markdown plus tables ##
-
-| Header | Header | Right  |
-| ------ | ------ | -----: |
-|  Cell  |  Cell  |   $10  |
-|  Cell  |  Cell  |   $20  |
-
-* Outer pipes on tables are optional
-* Colon used for alignment (right versus left)
-
-## Markdown plus definition lists ##
-
-Bottled water
-: $ 1.25
-: $ 1.55 (Large)
-
-Milk
-Pop
-: $ 1.75
-
-* Multiple definitions and terms are possible
-* Definitions can include multiple paragraphs too
-
-*[ABBR]: Markdown plus abbreviations (produces an <abbr> tag)
