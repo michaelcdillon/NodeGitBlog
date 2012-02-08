@@ -3,20 +3,29 @@ var markdown = require ("markdown").markdown;
 
 /**
   * Pulls out the meta data of the post and also the content
-  * and passes this data to the callback.
+  * and passes this data to the callback. If the meta doesn't exist
+  * or can't be parsed then null is returned.
   */
 exports.parseMetaDataAndContent = function (postContent, next) {
     var lines = postContent.split ("\n");
-    var meta = eval("(" + lines[0] + ")");
-    console.log ('Meta: ' + meta);
+    var meta = null;
     
-    var content = postContent.replace (lines[0] + "\n", "");
-    var content = markdown.toHTML (content);
-
-    next ({
-        meta    : meta,
-        content : content
-    });
+    try {
+        meta = JSON.parse (lines[0]);
+    
+        var content = postContent.replace (lines[0] + "\n", "");
+        var content = markdown.toHTML (content);
+        
+        next ({
+            meta    : meta,
+            content : content
+        });
+    }
+    catch (e) {
+        console.log ('Error parsing blog meta: ' + e);
+        next (null);
+    }
+     
 }
 
 /**
