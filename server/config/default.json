@@ -1,0 +1,24 @@
+{
+    "GitHubSettings" : {
+        "repo"              : "NodeGitBlog",
+        "username"          : "michaelcdillon",
+        "branch"            : "master",
+        "contentDir"        : "content",
+        "rawUrl"            : "https://raw.github.com"
+    },
+
+    "MongoDB" : {
+        "host"              : "localhost",
+        "db"                : "NodeGitBlog"
+    },
+
+    "Server" : {
+        "listenPort"        : 8080
+    },
+
+    "Routes" : {
+        "index"             : "/",
+        "gitHubPostRecieve" : "/newPush",
+        "postRequest"       : "/post/:title"
+    }
+}
