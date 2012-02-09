@@ -1,16 +1,20 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
   , routes = require('./lib/routes')
+  , mongoose = require ('mongoose')
   , dao = require('./lib/dao')
-  , github = require ('./lib/github')
   , blog = require ('./lib/blog')
-  , routes_config = require ('config').Routes;
+  , github = require ('./lib/github')
+  , config = require ('config')
+  , serverConfig = config.Server
+  , routesConfig = config.Routes;
 
-dao.setup ();
+dao.setup (mongoose);
+blog.setup (dao);
+github.setup (dao, blog);
 
 var app = module.exports = express.createServer();
 
@@ -37,9 +41,9 @@ app.configure('production', function(){
 
 // Routes
 
-app.get ('/', routes.index);
-app.post ('/newPush', github.checkForContentChanges, routes.newGitHubPost);
-app.get ('/post/:title', blog.preparePost, routes.viewPost);
+app.get (routesConfig.index, routes.index);
+app.post (routesConfig.gitHubPostRecieve, github.checkForContentChanges, routes.newGitHubPost);
+app.get (routesConfig.postRequest, blog.preparePost, routes.viewPost);
 
-app.listen(3000);
+app.listen(serverConfig.listenPort);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

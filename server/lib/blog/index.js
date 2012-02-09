@@ -1,5 +1,10 @@
-var dao = require ('../dao');
 var markdown = require ("markdown").markdown;
+
+var dao;
+
+exports.setup = function (daoIn) {
+    dao = daoIn;
+};
 
 /**
   * Pulls out the meta data of the post and also the content
@@ -26,7 +31,7 @@ exports.parseMetaDataAndContent = function (postContent, next) {
         next (null);
     }
      
-}
+};
 
 /**
   * Prepares a post for display and takes the post
@@ -51,4 +56,4 @@ exports.preparePost = function (req, res, next) {
             next ();
         }
     });
-}
+};

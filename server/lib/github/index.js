@@ -1,7 +1,13 @@
 var config = require ('config').GitHubSettings;
 var httpClient = require ('request');
-var dao = require ('../dao');
-var blog = require ('../blog');
+
+var dao;
+var blog;
+
+exports.setup = function (daoIn, blogIn) {
+    dao = daoIn;
+    blog = blogIn;
+};
 
 /**
   * Finds if there are any content changes in the JSON payload
@@ -53,7 +59,7 @@ function findContentChanges (payload) {
     contentChanged.username = commit.author.username;
      
     return contentChanged;    
-}
+};
 
 /**
   * Through the dao, stores the new content in the database.
@@ -70,7 +76,7 @@ function storeNewContent (fileName, content, timestamp, id, authorEmail, usernam
         );
 
     });
-}
+};
 
 
 /**
@@ -81,7 +87,7 @@ function storeNewContent (fileName, content, timestamp, id, authorEmail, usernam
   * in the database.
   */
 function fetchContent (fileName, next, timestamp, id, authorEmail, username, name) {
-    var rawUrl = "https://" + config.rawUrl + "/" + config.username;
+    var rawUrl = config.rawUrl + "/" + config.username;
     rawUrl += "/" + config.repo + "/" + config.branch + "/" + fileName;
     
     console.log ('Fetching: ' + rawUrl);
@@ -94,7 +100,7 @@ function fetchContent (fileName, next, timestamp, id, authorEmail, username, nam
             console.log (response.statusCode + " | " + error);
         }
     });
-}
+};
 
 /**
   * Goes through all of the arrays in changedContent and
@@ -125,7 +131,7 @@ function actOnChangedContent (changedContent) {
         );
     }
 
-}
+};
 
 /**
   * Called when a Post-Receive URL hook is fired from GitHub.
@@ -143,4 +149,4 @@ exports.checkForContentChanges = function (req, res, next) {
         actOnChangedContent (contentChanged);               
 
     next ();
-}
+};

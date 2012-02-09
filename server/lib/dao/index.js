@@ -1,8 +1,7 @@
 var mongo_config = require ('config').MongoDB;
-var mongoose = require ('mongoose');
 var models = require ('./../models');
 
-mongoose.connect('mongodb://' + mongo_config.host + '/' + mongo_config.db);
+var mongoose;
 
 var UserModel;
 var PostModel;
@@ -11,11 +10,14 @@ var RevisionModel;
 /**
   * Binds the mongoose models to the schemas
   */
-exports.setup = function () {
+exports.setup = function (mongooseIn) {
+    mongoose = mongooseIn;
+    mongoose.connect('mongodb://' + mongo_config.host + '/' + mongo_config.db);
+
     UserModel = mongoose.model ('User', models.UserSchema);
     PostModel = mongoose.model ('Post', models.PostSchema);
     RevisionModel = mongoose.model ('Revision', models.RevisionSchema);
-}
+};
 
 /**
   * Stores the new user in the database.
@@ -35,7 +37,7 @@ function saveNewUser (name, username, email, next) {
         else 
             console.log ("Error saving new User: " + error);
     });
-}
+};
 
 /**
   * Creates a new user and passes that new user object
