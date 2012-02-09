@@ -10,5 +10,6 @@
     , "request": ">= 0.0.1"
     , "markdown": ">= 0.0.1"
     , "nodeunit": ">= 0.0.1"
+    , "nodemock": ">= 0.0.1"
   }
 }
