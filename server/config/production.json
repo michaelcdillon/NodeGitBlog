@@ -1,0 +1,10 @@
+{
+    "MongoDB" : {
+        "host"              : "localhost",
+        "db"                : "NodeGitBlog"
+    },
+
+    "Server" : {
+        "listenPort"        : 8181
+    }
+}
