@@ -2,7 +2,7 @@ install_production :
 
 	sudo mkdir -p /var/node-apps/NodeGitBlog
 	sudo cp -R ./* /var/node-apps/NodeGitBlog
-    export NODE_ENV=production
+    sudo export NODE_ENV=production
 
 start_app :
 
