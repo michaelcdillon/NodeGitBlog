@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 try {
-    var reporter = require ('nodeunit').reporters.default;
+    var reporter = require ('nodeunit').reporters.junit;
 }
 catch (e) {
     console.log ("Cannot find nodeunit module.");
@@ -11,4 +11,4 @@ catch (e) {
 }
 
 process.chdir (__dirname);
-reporter.run (['test']);
+reporter.run (['test'], { output : "test-results"});
