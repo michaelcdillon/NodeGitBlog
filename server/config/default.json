@@ -13,7 +13,7 @@
     },
 
     "Server" : {
-        "listenPort"        : 8181
+        "listenPort"        : 3000
     },
 
     "Routes" : {
