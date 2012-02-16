@@ -14,7 +14,7 @@ stop_app :
 
 deploy_production :
 
-	make stop_app;
-	make install_production;
-	make start_app;
+	sudo make stop_app;
+	sudo make install_production;
+	sudo make start_app;
 
