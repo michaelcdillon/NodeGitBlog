@@ -10,6 +10,11 @@ start_app :
 
 stop_app :
 
-	sudo forever stop 0
+	- sudo forever stop app.js
 
+deploy_production :
+
+	make stop_app;
+	make install_production;
+	make start_app;
 
