@@ -83,7 +83,8 @@ exports.groupPreparePost = testCase ({
     },
 
     failsOnPurpose: function (test) {
-        test.equal (1, 1);
+        test.equal ("1", "1");
+        test.done ();
     }
     
 });
