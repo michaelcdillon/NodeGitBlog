@@ -10,11 +10,11 @@ test :
 
 start_app :
 
-	forever start app.js
+	forever start /var/node-apps/NodeGitBlog/app.js
 
 stop_app :
 
-	- forever stop app.js
+	- forever stop /var/node-apps/NodeGitBlog/app.js
 
 restart_production :
 
