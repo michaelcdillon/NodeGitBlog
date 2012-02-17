@@ -10,7 +10,7 @@ test :
 
 start_app :
 
-	forever start /var/node-apps/NodeGitBlog/app.js
+	NODE_ENV=production forever start /var/node-apps/NodeGitBlog/app.js
 
 stop_app :
 
