@@ -1,4 +1,13 @@
 {
+
+    "GitHubSettings" : {
+        "repo"              : "NodeGitBlog",
+        "username"          : "michaelcdillon",
+        "branch"            : "master",
+        "contentDir"        : "content",
+        "rawUrl"            : "https://raw.github.com"
+    },
+
     "MongoDB" : {
         "host"              : "localhost",
         "db"                : "NodeGitBlog"

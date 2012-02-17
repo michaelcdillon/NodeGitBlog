@@ -8,6 +8,7 @@ var express = require('express')
   , dao = require('./lib/dao')
   , blog = require ('./lib/blog')
   , github = require ('./lib/github')
+  , bootstrap = require ('./lib/bootstrap')
   , config = require ('config')
   , redisStore = require ('connect-redis')(express)
   , serverConfig = config.Server
@@ -16,6 +17,7 @@ var express = require('express')
 dao.setup (mongoose);
 blog.setup (dao);
 github.setup (dao, blog);
+bootstrap.setup (dao);
 
 var app = module.exports = express.createServer();
 
@@ -37,6 +39,7 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.session({ secret: secretKey }));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  bootstrap.loadDevelopmentData ();
 });
 
 app.configure('production', function(){
