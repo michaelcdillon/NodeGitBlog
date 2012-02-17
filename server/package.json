@@ -12,5 +12,6 @@
     , "nodeunit": ">= 0.0.1"
     , "nodemock": ">= 0.0.1"
     , "stylus": ">= 0.0.1"
+    , "connect-redis": ">= 0.0.1"
   }
 }

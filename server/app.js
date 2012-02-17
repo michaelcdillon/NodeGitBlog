@@ -9,6 +9,7 @@ var express = require('express')
   , blog = require ('./lib/blog')
   , github = require ('./lib/github')
   , config = require ('config')
+  , redisStore = require ('connect-redis')(express)
   , serverConfig = config.Server
   , routesConfig = config.Routes;
 
@@ -17,6 +18,8 @@ blog.setup (dao);
 github.setup (dao, blog);
 
 var app = module.exports = express.createServer();
+
+var secretKey = String (serverConfig.secretKey);
 
 // Configuration
 
@@ -27,16 +30,17 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(require('stylus').middleware({ src: __dirname + '/public' }));
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'your secret here' }));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
 
 app.configure('development', function(){
+  app.use(express.session({ secret: secretKey }));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
 app.configure('production', function(){
+  app.use(express.session({ secret: secretKey, store: new redisStore ()}));
   app.use(express.errorHandler()); 
 });
 

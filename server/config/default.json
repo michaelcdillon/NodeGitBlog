@@ -13,7 +13,8 @@
     },
 
     "Server" : {
-        "listenPort"        : 3000
+        "listenPort"        : 3000,
+        "serverKey"         : "a secret key"
     },
 
     "Routes" : {

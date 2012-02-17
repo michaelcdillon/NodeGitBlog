@@ -1,20 +1,23 @@
 install_production :
+    
+	rm -rf /var/node-apps/NodeGitBlog
+	mkdir -p /var/node-apps/NodeGitBlog
+	cp -R ./* /var/node-apps/NodeGitBlog
 
-	sudo mkdir -p /var/node-apps/NodeGitBlog
-	sudo cp -R ./* /var/node-apps/NodeGitBlog
-    sudo export NODE_ENV=production
+test :
+    
+	node run-tests.js
 
 start_app :
 
-	sudo forever start app.js
+	forever start app.js
 
 stop_app :
 
-	- sudo forever stop app.js
+	- forever stop app.js
 
-deploy_production :
+start_production :
 
-	- sudo make stop_app;
-	sudo make install_production;
-	sudo make start_app;
+	- make stop_app;
+	make start_app;
 
