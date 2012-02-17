@@ -16,7 +16,7 @@ stop_app :
 
 	- forever stop app.js
 
-start_production :
+restart_production :
 
 	- make stop_app;
 	make start_app;
