@@ -20,6 +20,17 @@ exports.setup = function (mongooseIn) {
 };
 
 /**
+  * Cleans the datastore by dropping all collections of
+  * mongoose models.
+  */
+exports.CleanDatastore = function (next) {
+    UserModel.collection.drop ();
+    PostModel.collection.drop ();
+    RevisionModel.collection.drop ();
+    next ();
+};
+
+/**
   * Stores the new user in the database.
   */
 function saveNewUser (name, username, email, next) {
@@ -325,3 +336,4 @@ exports.SaveNewPost = function (fileName, title, content, timestamp, id, authorE
         }
     });
 }
+
